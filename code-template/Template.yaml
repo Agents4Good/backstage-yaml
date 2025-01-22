@@ -1,4 +1,4 @@
-apiVersion: backstage.io/v1beta2
+apiVersion: backstage.io/v1beta3
 kind: Template
 metadata:
   name: code-template
@@ -51,36 +51,40 @@ spec:
               - github.com
 
   steps:
-    - id: template
+    - id: fetch-base
       name: Fetch Skeleton + Template
       action: fetch:cookiecutter
       input:
         url: ./template
-        copyWithoutRender:
-          - .github/workflows/*
         values:
           name: '{{ parameters.name }}'
           title: '{{ parameters.title }}'
           description: '{{ parameters.description }}'
           namespace: '{{ parameters.namespace }}'
-          destination: '{{ parseRepoUrl parameters.repoUrl }}'
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: '{{ parameters.owner }}'
+        copyWithoutRender:
+          - 'github/*'
 
     - id: publish
       name: Publish
       action: publish:github
       input:
         allowedHosts: ['github.com']
-        description: '{{ parameters.title }}'
-        repoUrl: '{{ parameters.repoUrl }}'
+        description: ${{ parameters.title }}
+        repoUrl: ${{ parameters.repoUrl }}
 
     - id: register
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: '{{ steps.publish.output.repoContentsUrl }}'
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: '/catalog-info.yaml'
 
   output:
-    remoteUrl: '{{ steps.publish.output.remoteUrl }}'
-    entityRef: '{{ steps.register.output.entityRef }}'
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
