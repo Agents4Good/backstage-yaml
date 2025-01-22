@@ -11,7 +11,7 @@ spec:
   type: service
   parameters:
     - title: Configuração do projeto
-      required: [name, title, description, namespace]
+      required: [name, title, description]
       properties:
         name:
           title: Nome
@@ -28,10 +28,6 @@ spec:
           description: Breve descrição do seu projeto.
           ui:options:
             rows: 3
-        namespace:
-          title: Namespace-raíz
-          type: string
-          description: O namespace-raíz do projeto. Utilize apenas eltras e pontos.
         owner:
           title: Proprietário(a)(s)
           type: string
@@ -60,7 +56,6 @@ spec:
           name: '{{ parameters.name }}'
           title: '{{ parameters.title }}'
           description: '{{ parameters.description }}'
-          namespace: '{{ parameters.namespace }}'
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: '{{ parameters.owner }}'
         copyWithoutRender:
