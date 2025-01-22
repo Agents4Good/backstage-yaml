@@ -47,6 +47,8 @@ spec:
               - github.com
             allowedOrganizations:
               - Agents4Good
+            allowedOwners:
+              - Agents4Good
 
   steps:
     - id: fetch-base
