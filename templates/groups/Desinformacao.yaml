@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: desinformacao
+  description: Time responsável por explorar técnicas de identificação, mitigação e redução de conteúdos polarizados e enganosos, utilizando agentes inteligentes e modelos de linguagem (LLMs).
+spec:
+  type: team
+  profile:
+    displayName: Contra Desinformação
+    email: agents4good@gmail.com
+  children: []

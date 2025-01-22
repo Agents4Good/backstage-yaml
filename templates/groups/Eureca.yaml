@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: eureca
+  description: Time responsável por criar e manter o projeto EurecaAI (sistema multiagente que utiliza IA e a API Eureca da UFCG para disponibilizar informações da universidade).
+spec:
+  type: team
+  profile:
+    displayName: Fundação
+    email: agents4good@gmail.com
+  children: []
