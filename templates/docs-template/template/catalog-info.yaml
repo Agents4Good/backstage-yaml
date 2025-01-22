@@ -1,13 +1,13 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Component
 metadata:
-    name: '{{ cookiecutter.name }}'
-    title: '{{ cookiecutter.title }}'
-    description: '{{ cookiecutter.description }}'
+    name: {{ cookiecutter.name }}
+    title: {{ cookiecutter.title }}
+    description: {{ cookiecutter.description }}
     annotations:
-        github.com/project-slug: '{{ cookiecutter.destination.owner }}/{{ cookiecutter.destination.repo }}'
+        github.com/project-slug: {{ cookiecutter.destination.owner }}/{{ cookiecutter.destination.repo }}
 
 spec:
     type: documentation
     lifecycle: development
-    owner: '{{ cookiecutter.owner }}'
+    owner: {{ cookiecutter.owner }}
