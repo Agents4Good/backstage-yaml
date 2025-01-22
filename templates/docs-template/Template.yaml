@@ -1,0 +1,85 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: code-template
+  title: Code Template
+  description: Modelo de um componente para criação de repositório dedicado à documentações.
+  tags: [docs]
+
+spec:
+  owner: Agents4Good/Fundação
+  type: documentation
+  parameters:
+    - title: Configuração da documentação
+      required: [name, title, description]
+      properties:
+        name:
+          title: Nome
+          type: string
+          description: Nome da sua documentação. Use apenas letras, números, pontos e hífens.
+          ui:autofocus: true
+        title:
+          title: Título
+          type: string
+          description: Nome da sua documentação que será exibida no README e no catálogo de componentes.
+        description:
+          title: Descrição
+          type: string
+          description: Breve descrição da documentação.
+          ui:options:
+            rows: 3
+        owner:
+          title: Proprietário(a)(s)
+          type: string
+          description: Equipe responsável pela documentação.
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: [Group]
+    - title: Configuração do Repositório
+      required: [repoUrl]
+      properties:
+        repoUrl:
+          title: Local do repositório
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+
+  steps:
+    - id: fetch-base
+      name: Fetch Skeleton + Template
+      action: fetch:cookiecutter
+      input:
+        url: ./template
+        values:
+          name: '{{ parameters.name }}'
+          title: '{{ parameters.title }}'
+          description: '{{ parameters.description }}'
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: '{{ parameters.owner }}'
+        copyWithoutRender:
+          - 'github/*'
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: ${{ parameters.title }}
+        repoUrl: ${{ parameters.repoUrl }}
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
