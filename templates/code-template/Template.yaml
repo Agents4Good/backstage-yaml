@@ -45,6 +45,8 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            allowedOrganizations:
+              - Agents4Good
 
   steps:
     - id: fetch-base
