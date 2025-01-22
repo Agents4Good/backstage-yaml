@@ -53,11 +53,11 @@ spec:
       input:
         url: ./template
         values:
-          name: '{{ parameters.name }}'
-          title: '{{ parameters.title }}'
-          description: '{{ parameters.description }}'
+          name: ${{ parameters.name }}
+          title: ${{ parameters.title }}
+          description: ${{ parameters.description }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: '{{ parameters.owner }}'
+          owner: ${{ parameters.owner }}
         copyWithoutRender:
           - 'github/*'
 
