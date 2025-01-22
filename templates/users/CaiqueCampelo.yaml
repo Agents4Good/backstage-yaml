@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: caique-calazans
+spec:
+  profile:
+    displayName: Caíque Calazans
+    email: caique.campelo@ccc.ufcg.edu.br
+    picture: https://avatars.githubusercontent.com/u/116117098
+  memberOf: [geracao]

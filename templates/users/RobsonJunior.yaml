@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: robson-junior
+  profile:
+    displayName: José Robson
+    email: joserobson@copin.ufcg.edu.br
+    picture: https://avatars.githubusercontent.com/u/20714148
+  memberOf: [educacao]
