@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: lucas-raniere
+spec:
   profile:
     displayName: Lucas Raniére
     email: lucasraniere@copin.ufcg.edu.br

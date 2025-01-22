@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: kemilli-lima
+spec:
   profile:
     displayName: Kemilli Lima
     email: kemilli.nicole.santos.lima@ccc.ufcg.edu.br

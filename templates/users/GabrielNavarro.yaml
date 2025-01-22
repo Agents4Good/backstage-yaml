@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: gabriel-navarro
+spec:
   profile:
     displayName: Gabriel Navarro
     email: gabriel.franca@ee.ufcg.edu.br

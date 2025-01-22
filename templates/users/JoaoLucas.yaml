@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: joao-lucas
+spec:
   profile:
     displayName: João Lucas
     email: joao.lucas.gomes.brandao@ccc.ufcg.edu.br

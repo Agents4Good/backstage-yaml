@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: ana-luiza
+spec:
   profile:
     displayName: Ana Luiza
     email: ana.luiza.cavalcante.ramos@ccc.ufcg.edu.br

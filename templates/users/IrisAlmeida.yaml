@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: iris-almeida
+spec:
   profile:
     displayName: Íris Almeida
     email: iris.farias@ccc.ufcg.edu.br

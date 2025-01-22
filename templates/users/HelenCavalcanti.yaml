@@ -2,6 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: helen-cavalcanti
+spec:
   profile:
     displayName: Helen Cavalcanti
     email: helen.cavalcanti@ccc.ufcg.edu.br
