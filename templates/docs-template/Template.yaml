@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: code-template
-  title: Code Template
+  name: docs-template
+  title: Docs Template
   description: Modelo de um componente para criação de repositório dedicado à documentações.
   tags: [docs]
 
